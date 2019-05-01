@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>JS</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+
+    <h1>JS | Function declarations</h1>
+
+    <script>
+
+
+
+        // Recuerda: las funciones carentes de retorno retornan 'undefined'
+        const isMultiple = value => value % 5 === 0
+
+
+        // Recuerda: los condicionales aceptan cuaklquier valor truthy y rechazan cualquier falsie (false, undefined, null, 0, "", NaN)
+        if (isMultiple(4)) {
+            alert('es mulktiplo')
+        }
+        else {
+            alert('no lo es')
+        }
+
+
+
+
+
+
+
+
+        // Las funciones son first-class-objects y pueden ser tratadas como variables y/o valores
+        const estimatePrice = (cost, applyVat) => {
+
+            if (applyVat) {
+                applyVat(cost)
+            }
+            else {
+                console.log(cost)
+            }
+        }
+
+        const addGeneralVAT = cost => console.log(cost * 1.21)
+        const addReducedVAT = cost => console.log(cost * 1.1)
+
+
+        estimatePrice(1000)
+        estimatePrice(1000, addGeneralVAT)
+        estimatePrice(1000, addReducedVAT)
+
+
+
+
+
+
+
+
+
+
+        // Las funciones pueden ser anónimas (uno único) o nominales (alta reusabilidad)
+        // Aquí ejemplo incongruente donde usamos una función nominal para recorrer un Array
+        const cities = ['madrid', 'bcn', 'bilbao']
+        const showCities = city => console.log(city)
+
+        cities.forEach(showCities)
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // window.onmouseout = () => alert("Dame tu email, merluzo")
+
+        // Equivalencia con función nominal:
+        const askForEmail = () => alert("Dame tu email, merluzo")
+        window.onmouseout = askForEmail
+
+
+
+
+
+
+
+
+
+
+
+
+        // Function Global Object Constructor (en desuso)
+        var getFullPrice = new Function('val', 'return val * 1.21')
+        console.log('El precio final sería de ' + getFullPrice(1000) + '€ (IVA incl.)')
+
+
+
+    </script>
+
+</body>
+
+</html>

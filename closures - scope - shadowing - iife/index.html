@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>JS</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+
+    <h1>JS | Closures & Scope</h1>
+
+    <script>
+
+
+
+
+
+        // Closures: una función almacena en memoria tanto su contenido como su contexto cuando sea necesario
+        function count() {
+
+            console.log('Inicio ejecución función')
+
+            let counter = 0
+
+            setInterval(function () {
+                let increase = counter += 5
+                console.log(increase)
+            }, 1000)
+
+            console.log('Fín ejecución función')
+        }
+
+        count()
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Scope: el alcance de una variable está determinado por el bloque sobre la que se declara (local scope), o si no se declara en ningún bloque (global scope)
+
+        const global = 'Soy una global'
+
+        if (true) {
+            const local = 'Soy una local'
+        }
+
+        alert(global)
+        // alert(local)     // error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Variable shadowing
+        let b = 1
+
+        function inner() {
+            let b = 3   // shadows global variable
+        }
+
+        inner()
+        console.log(b)
+
+
+
+
+
+
+
+
+
+
+
+
+            // IIFE: inmedimeately-invoked function expression
+            (function () {
+
+                console.log("I am being invoked right at the script execution")
+
+            }());
+
+
+
+
+        * /
+    </script>
+
+</body>
+
+</html>

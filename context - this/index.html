@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>JS</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+
+    <h1>Context | this</h1>
+
+    <script>
+
+
+        // La palabra clave this, dentro de un function statement, representa al objeto window ya que las funciones clásicas son en realidad métodos del objeto window:
+        const person = {
+            age: 22,
+            name: 'Ger',
+            sayYourAge: function () {
+
+                setTimeout(function () {
+                    alert("He esperado un segundo para decirte que tengo " + this.age + " años")    // undefined años
+                }, 1000)
+            }
+        }
+
+        person.sayYourAge()
+
+
+
+
+
+        // Para resolverlo, podemos usar .bind() asociando un objeto específico como contexto (this) de una función:
+        const person = {
+            age: 22,
+            name: 'Ger',
+            sayYourAge: function () {
+
+                setTimeout(function () {
+                    alert("He esperado un segundo para decirte que tengo " + this.age + " años")
+                }.bind(this), 1000) // OJO! .bind()
+            }
+        }
+
+        person.sayYourAge()
+
+
+
+
+
+
+
+        // O hacer uso de las funciones flecha, que al carecer de statement (function) no reorientan 'this' a window
+        const person = {
+            age: 22,
+            name: 'Ger',
+            sayYourAge: function () {
+
+                setTimeout(() => {
+                    alert("He esperado un segundo para decirte que tengo " + this.age + " años")    // yay!
+                }, 1000)
+            }
+        }
+
+        person.sayYourAge()
+
+
+
+
+
+
+        // Esta situación de contexto se da tanto en métodos de objetos, como en clases, como en instancias.
+
+    </script>
+
+</body>
+
+</html>
